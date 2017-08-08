@@ -3,12 +3,12 @@
 (function( $ ){
 
     $.fn.myPlugin = function() {
-
-        // нет необходимости писать $(this), так как "this" - это уже объект jQuery
-        // выражение $(this) будет эквивалентно $($('#element'));
-
-        this.toggleClass('active')
-
+        this.toggleClass('active');
+        if(!this.attr('class')) {
+            setTimeout(() => { this.css('z-index','0'); }, 350);
+        } else {
+            this.css('z-index','1');
+        }
     };
 })( jQuery );
 

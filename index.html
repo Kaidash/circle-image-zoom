@@ -16,103 +16,54 @@
     <div></div>
     <div></div>
     <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
 </div>
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="dist/app.js"></script>
 <script>
     window.onload = function () {
         var margin = 15;
-        var isCircle = false;
-        var innerWidth= window.innerWidth;
-        var widthBox = $('.wrapper div:first-child').outerWidth(true) + margin * 2;
-        var heightBox = $('.wrapper div:first-child').outerHeight(true) + margin * 2;
-        var rowCount = ~~(innerWidth / widthBox);
-        var countedLeft = 0;
-        $('.wrapper div').each(function(i, obj) {
-            if(i+1 <=  rowCount){
-                $( obj ).css({
-                    "left": i * widthBox,
-                    "top": 0,
-                    "background-position": -(i * widthBox)+"px"+" 0",
-                    "border-radius": isCircle ? "50%" : '0'
-                })
-            } else {
-                $( obj ).css({
-                    "left": countedLeft,
-                    "top": (Math.ceil((i+1) / rowCount) * heightBox) - heightBox,
-                    "background-position": -countedLeft + "px" + " -" + ((Math.ceil((i+1) / rowCount) * heightBox) - heightBox) + "px",
-                    "border-radius": isCircle ? "50%" : '0'
-                });
-                if((i+1) % rowCount === 0){
-                    countedLeft = 0;
+        var isCircle = true;
+
+        var settingCoordinate = function () {
+            var innerWidth= window.innerWidth;
+            var widthBox = $('.wrapper div:first-child').outerWidth(true) + margin * 2;
+            var heightBox = $('.wrapper div:first-child').outerHeight(true) + margin * 2;
+            var rowCount = ~~(innerWidth / widthBox);
+            var countedLeft = 0;
+            $('.wrapper div').each(function(i, obj) {
+                if(i+1 <=  rowCount){
+                    $( obj ).css({
+                        "left": i * widthBox,
+                        "top": 0,
+                        "background-position": -(i * widthBox)+"px"+" 0",
+                        "border-radius": isCircle ? "50%" : '0'
+                    })
                 } else {
-                    countedLeft = countedLeft + widthBox;
+                    $( obj ).css({
+                        "left": countedLeft,
+                        "top": (Math.ceil((i+1) / rowCount) * heightBox) - heightBox,
+                        "background-position": -countedLeft + "px" + " -" + ((Math.ceil((i+1) / rowCount) * heightBox) - heightBox) + "px",
+                        "border-radius": isCircle ? "50%" : '0'
+                    });
+                    if((i+1) % rowCount === 0){
+                        countedLeft = 0;
+                    } else {
+                        countedLeft = countedLeft + widthBox;
+                    }
                 }
-            }
-        });
-        $('div').hover(
+            });
+        };
+        settingCoordinate();
+        $('.wrapper div').hover(
             function() {
                 $( this ).myPlugin();
             }, function() {
                 $( this ).myPlugin();
-            })
+            });
+        $( window ).resize(function() {
+            settingCoordinate()
+        });
+
     }
 </script>
 </body>

@@ -14,21 +14,45 @@ body{
     height: 100px;
     content: '';
     z-index: 0;
-    transition: all 350ms ease-in-out;
     background-repeat: no-repeat;
     cursor: pointer;
+    transition: all 350ms ease-in-out;
   }
   div.active{
     width: 100vw;
     height: 100vh;
     left: 0!important;
     top:0!important;
+    border-radius: 0!important;
     background-position: 0 0!important;
-    z-index: 1;
     transition: all 350ms ease-in-out;
   }
-  div{
-    background-image: url("/app/images/shvejtsariya_alpy_gory_noch_krasivyj_pejzazh_99817_3840x2160.jpg");
+  div:nth-child(1){
+    background-image: url("/app/images/1.png");
+  }
+  div:nth-child(2){
+    background-image: url("/app/images/2.jpg");
+  }
+  div:nth-child(3){
+    background-image: url("/app/images/3.jpg");
+  }
+  div:nth-child(4){
+    background-image: url("/app/images/4.jpg");
+  }
+  div:nth-child(5){
+    background-image: url("/app/images/5.jpg");
+  }
+  div:nth-child(6){
+    background-image: url("/app/images/6.jpg");
+  }
+  div:nth-child(7){
+    background-image: url("/app/images/7.jpg");
+  }
+  div:nth-child(8){
+    background-image: url("/app/images/8.jpg");
+  }
+  div:nth-child(9){
+    background-image: url("/app/images/9.jpg");
   }
 }
 
